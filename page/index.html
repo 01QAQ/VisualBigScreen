@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>可视化大屏</title>
+    <!-- 全局css -->
+    <link rel="stylesheet" href="../style/golbal.css">
+    <!-- 页面元素css -->
+    <link rel="stylesheet" href="../style/index.css">
+    <script src="../js/echarts.js"></script>
+    <script src="../js/echarts-gl.min.js"></script>
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <div class="top">
+            <div class="top-left">
+                <div class="top-left-logo"><img src="../static/logo.png" alt="" srcset=""></div>
+
+                <div class="top-left-text">北京国际机场实时数据看板</div>
+            </div>
+            <div class="top-right">
+                <div class="top-right-weather"><img src="../static/rain.png" alt="">&ensp;大雨&ensp;&ensp; | &ensp;</div>
+                <div class="top-right-temperature"><img src="../static/treeLeaf.png" alt="" srcset=""> 53 良&ensp;&ensp;
+                    | &ensp;</div>
+                <div class="top-right-time">
+                    <div class="clock"></div>
+                    <div class="month">2022.08.09</div>
+                </div>
+            </div>
+    </div>
+    <div class="center">
+        <div class="center-left">
+            <!-- 上部分 -->
+            <div class="center-left-top">
+                <div class="center-left-top-left">
+                    <div class="center-left-top-left-top">
+                        <img src="../static/up.png" alt="">
+                        &ensp;<span>出港量,今日航班总数</span>
+                    </div>
+                    <div class="center-left-top-left-center">
+                        252
+                    </div>
+                    <div class="center-left-top-left-bottom">
+
+                    </div>
+                </div>
+                <div class="center-left-top-right">
+                    <div class="center-left-top-left-top">
+                        <img src="../static/up.png" alt="">
+                        &ensp;<span>入港量,今日航班总数</span>
+                    </div>
+                    <div class="center-left-top-right-center">
+                        167
+                    </div>
+                    <div class="center-left-top-right-bottom">
+
+                    </div>
+                </div>
+            </div>
+            <!-- 中间的双柱图 -->
+            <div class="center-left-center"></div>
+            <span class="center-left-text">时段-进出港航班数</span>
+            <!-- 下边的 -->
+            <div class="center-left-bottom">
+                <div class="center-left-bottom-left">
+                    <div class="center-left-bottom-left-top">
+                        <img src="../static/people.png" alt="">
+                        <span>出港量,今日累计旅客</span>
+                    </div>
+                    <div class="center-left-bottom-left-center">
+                        <div class="peopleNum">12,474</div>
+                        <div class="this-right">
+                            <div class="right-top">每一小时提升</div>
+                            <div class="right-bottom"><span>35.8%</span>&ensp;<img src="../static/redarrowhead.png"
+                                    alt=""></div>
+                        </div>
+                    </div>
+                    <div class="center-left-bottom-left-bottom">
+
+                    </div>
+                </div>
+                <div class="center-left-bottom-right">
+                    <div class="center-left-bottom-left-top">
+                        <img src="../static/people.png" alt="">
+                        <span>出港量,今日累计旅客</span>
+                    </div>
+                    <div class="center-left-bottom-left-center">
+                        <div class="peopleNum">15,402</div>
+                        <div class="this-right">
+                            <div class="right-top">每一小时提升</div>
+                            <div class="right-bottom"><span>33.1%</span>&ensp;<img src="../static/redarrowhead.png"
+                                    alt=""></div>
+                        </div>
+                    </div>
+                    <div class="center-left-bottom-right-bottom">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="center-earth"></div>
+        <div class="center-right">
+            <!-- 上半部分 -->
+            <div class="center-right-top">
+                <div class="center-right-top-child">
+                    <div class="center-right-top-child-left">
+                        <img src="../static/up.png" alt=""
+                            srcset="">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;即将起飞航班<br>
+                        <br>
+                        &ensp;&ensp;<span>21</span> 次
+                    </div>
+                    <div class="center-right-top-child-right"></div>
+                </div>
+                <div class="center-right-top-child">
+                    <div class="center-right-top-child-left">
+                        <img src="../static/up.png" alt=""
+                            srcset="">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;即将起飞航班<br>
+                        <br>
+                        &ensp;&ensp;<span>41</span> 次
+                    </div>
+                    <div class="center-right-top-child-right2"></div>
+                </div>
+            </div>
+            <!-- 下半部分 -->
+            <div class="center-right-bottom">
+                <div class="center-right-bottom-title">延误进出港机场——今日前四</div>
+                <div class="center-right-bottom-contentOne">
+
+                </div>
+                <div class="center-right-bottom-contentTwo">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="../js/echartsOne.js"></script>
+<!-- <script src="../js/index.js"></script> -->
+<!-- 地球的cdn -->
+<script>
+      function getNowTime() {
+        let nowTime = new Date()
+        var hour = nowTime.getHours(); //得到小时数
+        var minute = nowTime.getMinutes(); //得到分钟数
+        var second = nowTime.getSeconds(); //得到秒数
+        if (hour < 10) {
+            hour = '0' + hour
+        }
+        if (minute < 10) {
+            minute = '0' + minute
+        }
+        if (second < 10) {
+            second = '0' + second
+        }
+        let time = hour + ":" + minute + ':' + second
+        return time
+    }
+    function getNowDay(){
+        let nowTime = new Date()
+        var day = nowTime.getDay()//得到日期
+        var month = nowTime.getMonth() + 1 //得到月份
+        var years = nowTime.getFullYear() //得到年
+        if (day < 10) {
+            day = '0' + day
+        }
+        if (month < 10) {
+            month = '0' + month
+        }
+        nowDay = years + '.' + month + '.'+day
+        return(nowDay)
+    }
+    
+    setInterval("document.querySelector('.month').innerText = getNowDay()",1000)
+    setInterval("document.querySelector('.clock').innerText = getNowTime()",1000)
+</script>
+
+</html>
